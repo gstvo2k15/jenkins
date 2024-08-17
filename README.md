@@ -63,3 +63,14 @@ Install plugins Gitlab, Gitlab API and Authentication
 Token name:
 Jenkins-Gitlab-API-Access
 ```
+
+### Pipeline execution
+
+- Create pipeline:
+  `http://jenkins.XXXXX.org/view/all/newJob`
+
+- Configure pipeline paste content of Jenkinsfile:
+  `http://jenkins.XXXXX.org/job/checkpythoncode/configure`
+
+- Execute pipeline:
+  `http://jenkins.XXXXX.org/job/checkpythoncode/build?delay=0sec`
