@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://your-repo-url.git'
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh 'flake8 .'
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                sh 'python manage.py test'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'python setup.py sdist'
+            }
+        }
+    }
+
+    post {
+        always {
+            junit '**/test-reports/*.xml'
+            archiveArtifacts artifacts: 'dist/*.tar.gz', allowEmptyArchive: true
+        }
+    }
+}
