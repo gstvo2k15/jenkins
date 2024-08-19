@@ -124,3 +124,7 @@ node {
     }
 }
 ```
+
+### Basic config for sonarqube:
+
+https://www.youtube.com/watch?v=jvDpblVDvu0
